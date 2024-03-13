@@ -178,7 +178,7 @@ export default function DesignSystem() {
           </div>
 
           <div className="flex">
-            <div className="mt-20">
+            <div className="mt-20 mr-20">
               {/* <!-- explore button --> */}
               <div className=" text-white">
                 <Link href="#">
@@ -187,31 +187,52 @@ export default function DesignSystem() {
               </div>
             </div>
 
-            <div className="mb-[50vh]">
+            <div className="mb-[50vh] flow">
               {/* <!-- Tabs --> */}
-              <div class="tab-list underline-indicators destinations flex gap-8">
+              <div className="underline-indicators flex gap-8">
                 <button
                   aria-selected="true"
-                  class="uppercase text-accent letter-spacing-2  font-sans-cond bg-dark"
+                  className="uppercase text-accent letter-spacing-2  font-sans-cond bg-dark"
                 >
                   Moon
                 </button>
                 <button
                   aria-selected="false"
-                  class="uppercase text-accent letter-spacing-2 font-sans-cond bg-dark "
+                  className="uppercase text-accent letter-spacing-2 font-sans-cond bg-dark "
                 >
                   Mars
                 </button>
                 <button
                   aria-selected="false"
-                  class="uppercase text-accent letter-spacing-2 font-sans-cond bg-dark "
+                  className="uppercase text-accent letter-spacing-2 font-sans-cond bg-dark "
                 >
                   Europa
                 </button>
               </div>
               {/* <!-- Dots --> */}
-
+              <div className="dot-indicators flex gap-4">
+                <button aria-selected="true">
+                  <span className="sr-only">Slide title</span>
+                </button>
+                <button aria-selected="false">
+                  <span className="sr-only">Slide title</span>
+                </button>
+                <button aria-selected="false">
+                  <span className="sr-only">Slide title</span>
+                </button>
+              </div>
               {/* <!-- Numbers --> */}
+              <div className="numbered-indicators grid grid-cols-3 gap-6">
+                <button aria-selected="true" className="font-serif">
+                  1
+                </button>
+                <button aria-selected="false" className="font-serif">
+                  2
+                </button>
+                <button aria-selected="false" className="font-serif">
+                  3
+                </button>
+              </div>
             </div>
           </div>
         </section>

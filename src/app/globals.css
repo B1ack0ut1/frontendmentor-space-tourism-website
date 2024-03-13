@@ -253,4 +253,31 @@ p {
     border-color: hsl(var(--clr-white) / 1);
     color: hsl(var(--clr-white) / 1);
   }
+
+  .dot-indicators > * {
+    background-color: hsl(var(--clr-light) / 0.25);
+    @apply p-[.5em] aspect-square rounded-full cursor-pointer;
+  }
+
+  .dot-indicators > *:hover,
+  .dot-indicators > *:focus {
+    background-color: hsl(var(--clr-light) / 0.5);
+  }
+
+  .dot-indicators > [aria-selected="true"] {
+    @apply bg-white;
+  }
+
+  .numbered-indicators > * {
+    @apply fs-600 grid place-content-center rounded-full aspect-square border border-white/25;
+  }
+
+  .numbered-indicators > *:hover,
+  .numbered-indicators > *:focus {
+    @apply border-white;
+  }
+
+  .numbered-indicators > [aria-selected="true"] {
+    @apply text-dark bg-white;
+  }
 }
