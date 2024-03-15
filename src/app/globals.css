@@ -27,19 +27,38 @@
   --clr-white: 0 0% 100%;
 
   /* font-sizes */
-  --fs-900: 9.375rem;
-  --fs-800: 6.25rem;
-  --fs-700: 3.5rem;
-  --fs-600: 2rem;
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
   --fs-500: 1.75rem;
-  --fs-400: 1.125rem;
+  --fs-400: 0.9375rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
 
   /* font-families */
   --ff-serif: "Bellefair", serif;
-  --ff-sans-cond: "Barlow Condense", sans-serif;
+  --ff-sans-cond: "Barlow Condensed", sans-serif;
   --ff-sans-normal: "Barlow", sans-serif;
+}
+
+@screen sm {
+  :root {
+    --fs-900: 9.375rem;
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-400: 1rem;
+  }
+}
+
+@screen md {
+  :root {
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.125rem;
+  }
 }
 
 body {
@@ -54,6 +73,8 @@ body {
   color: hsl(var(--clr-white));
   line-height: 1.5;
   min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
 }
@@ -191,6 +212,41 @@ p {
     max-width: 80rem;
   }
 
+  .grid-container {
+    border: 5px solid limegreen;
+    display: grid;
+    text-align: center;
+    place-items: center;
+    padding-inline: 1rem;
+  }
+
+  @screen md {
+    .grid-container {
+      text-align: left;
+      column-gap: var(--container-gap, 2rem);
+      grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+          2rem,
+          1fr
+        );
+    }
+    .grid-container > *:first-child {
+      border: 1px solid purple;
+      grid-column: 2;
+    }
+
+    .grid-container > *:last-child {
+      border: 1px solid orange;
+      grid-column: 3;
+    }
+  }
+
+  @screen lg {
+    .grid-container--home {
+      padding-bottom: max(6rem, 20vh);
+      align-items: end;
+    }
+  }
+
   .numbered-title {
     color: hsl(var(--clr-white));
     text-transform: uppercase;
@@ -206,7 +262,7 @@ p {
   }
 
   .large-button {
-    @apply relative z-[1] font-serif uppercase grid place-content-center aspect-square rounded-full bg-white text-dark px-[2em];
+    @apply relative z-[1] font-serif uppercase inline-grid place-content-center aspect-square rounded-full bg-white text-dark px-[2em] text-[2rem];
   }
   /* bg-white/[0.1036] */
   .large-button::after {
@@ -222,7 +278,7 @@ p {
     @apply scale-150 opacity-100;
   }
 
-  .primary-navigation {
+  /* .primary-navigation {
     --gap: 8rem;
     list-style: none;
     padding: 0;
@@ -231,7 +287,7 @@ p {
 
   .primary-nagivation a {
     text-decoration: none;
-  }
+  } */
 
   .primary-navigation a span {
     font-weight: 700;
@@ -279,5 +335,11 @@ p {
 
   .numbered-indicators > [aria-selected="true"] {
     @apply text-dark bg-white;
+  }
+
+  .home {
+    background-image: url("/home/background-home-desktop.jpg");
+    background-size: cover;
+    background-position: bottom center;
   }
 }

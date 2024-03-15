@@ -1,7 +1,11 @@
 import React from "react";
-
+import Navigation from "../components/Navigation";
 const Destination = () => {
-  return <div>Destination</div>;
+  return (
+    <div>
+      <Navigation />
+    </div>
+  );
 };
 
 export default Destination;
