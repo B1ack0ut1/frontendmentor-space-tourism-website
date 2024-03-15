@@ -338,8 +338,21 @@ p {
   }
 
   .home {
-    background-image: url("/home/background-home-desktop.jpg");
+    background-image: url("/home/background-home-mobile.jpg");
     background-size: cover;
     background-position: bottom center;
+  }
+
+  @screen md {
+    .home {
+      background-image: url("/home/background-home-tablet.jpg");
+      background-position: top center;
+    }
+  }
+
+  @screen lg {
+    .home {
+      background-image: url("/home/background-home-desktop.jpg");
+    }
   }
 }
