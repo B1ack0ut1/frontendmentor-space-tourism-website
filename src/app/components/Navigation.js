@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -6,9 +7,14 @@ const Navigation = () => {
   const pathname = usePathname();
 
   const isActive = (href) => pathname === href;
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavOpen((isNavOpen) => !isNavOpen);
+  };
 
   return (
-    <header className="flex items-center justify-between">
+    <header>
       <div>
         <img
           className="w-10 h-10 md:w-12 md:h-12"
@@ -16,9 +22,23 @@ const Navigation = () => {
           alt="logo"
         />
       </div>
-      <div className="lg:border lg:border-blue-300">random line</div>
+      {/* <div className="lg:border lg:border-blue-300">random line</div> */}
+      <button
+        onClick={toggleNav}
+        className={`mobile-nav-toggle ${isNavOpen ? "open-nav" : ""}`}
+        aria-controls="primary-navigation"
+      >
+        <span className="sr-only" aria-expanded="false">
+          Menu
+        </span>
+      </button>
       <nav>
-        <menu className="hidden md:flex gap-8 px-16 primary-navigation underline-indicators bg-slate-700">
+        <menu
+          id="primary-navigation"
+          className={`gap-8 px-16 primary-navigation underline-indicators ${
+            isNavOpen ? "open-nav" : ""
+          }`}
+        >
           <li className={isActive("/") ? "active" : ""}>
             <Link href="/" className="uppercase text-white letter-spacing-2">
               <span>00</span>Home
