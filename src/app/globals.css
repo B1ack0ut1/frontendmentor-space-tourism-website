@@ -217,10 +217,10 @@ p {
     display: grid;
     text-align: center;
     place-items: center;
-    padding-inline: 1rem;
+    padding-inline: 2rem;
   }
 
-  @screen md {
+  @screen lg {
     .grid-container {
       text-align: left;
       column-gap: var(--container-gap, 2rem);
@@ -287,9 +287,29 @@ p {
     text-decoration: none;
   } */
 
+  /* primary-header */
+
+  .logo {
+    margin-inline: clamp(1.5rem, 5vw, 3.5rem);
+    width: 48px;
+    height: 48px;
+  }
+
+  .primary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+  }
+
   .primary-navigation {
     display: flex;
     background-color: hsl(var(--clr-dark) / 0.95);
+  }
+
+  .primary-navigation a span {
+    font-weight: 700;
+    margin-right: 0.5em;
   }
 
   @supports (backdrop-filter: blur(1.5rem)) {
@@ -303,7 +323,7 @@ p {
     display: none;
   }
 
-  @media (max-width: 48rem) {
+  @media (max-width: 40rem) {
     .primary-navigation {
       flex-direction: column;
       position: fixed;
@@ -313,9 +333,10 @@ p {
       --underline-gap: 0.5rem;
       transform: translateX(100%);
       transition: transform 0.15s ease-in-out;
+      gap: clamp(1.5rem, 5vw, 3.5rem);
     }
 
-    .primary-navigation.open-nav {
+    .primary-navigation[data-visible="true"] {
       transform: translateX(0);
     }
 
@@ -331,20 +352,37 @@ p {
       top: 2rem;
       background: transparent;
       background-image: url("/shared/icon-hamburger.svg");
+      background-position: center;
       background-repeat: no-repeat;
       width: 1.5rem;
       aspect-ratio: 1;
       border: 0;
     }
 
-    .mobile-nav-toggle.open-nav {
+    .mobile-nav-toggle:has(span[aria-expanded="true"]) {
       background-image: url("/shared/icon-close.svg");
+    }
+
+    .mobile-nav-toggle:focus-visible {
+      outline: 5px solid white;
+      outline-offset: 5px;
     }
   }
 
-  .primary-navigation a span {
-    font-weight: 700;
-    margin-right: 0.5em;
+  @media (min-width: 40rem) and (max-width: 64rem) {
+    .primary-navigation {
+      padding-inline: 2.25rem;
+    }
+
+    .primary-navigation a span {
+      display: none;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .primary-navigation {
+      padding-inline: 4rem;
+    }
   }
 
   .underline-indicators > * {
@@ -365,7 +403,10 @@ p {
 
   .dot-indicators > * {
     background-color: hsl(var(--clr-light) / 0.25);
-    @apply p-[.5em] aspect-square rounded-full cursor-pointer;
+    padding: 0.5em;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    cursor: pointer;
   }
 
   .dot-indicators > *:hover,
@@ -390,9 +431,19 @@ p {
     @apply text-dark bg-white;
   }
 
+  .headline > span {
+    margin: 2rem 0;
+  }
+
+  .sub-headline {
+    max-width: 28rem;
+    line-height: 2;
+  }
+
   .home {
     background-image: url("/home/background-home-mobile.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: bottom center;
   }
 
