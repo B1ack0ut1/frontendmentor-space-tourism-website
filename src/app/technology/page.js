@@ -1,7 +1,11 @@
-import React from "react";
+import Navigation from "../components/Navigation";
 
 const Technology = () => {
-  return <div>Technology</div>;
+  return (
+    <>
+      <Navigation />
+    </>
+  );
 };
 
 export default Technology;

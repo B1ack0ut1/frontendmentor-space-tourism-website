@@ -240,7 +240,7 @@ p {
 
   @screen lg {
     .grid-container--home {
-      padding-bottom: max(6rem, 20vh);
+      padding-bottom: max(6rem, 25vh);
       align-items: end;
     }
   }
@@ -302,9 +302,20 @@ p {
     height: 96px;
   }
 
+  @media (min-width: 64rem) {
+    .primary-header {
+      margin-top: 3rem;
+    }
+  }
+
+  nav:has(.primary-navigation) {
+    height: 100%;
+  }
+
   .primary-navigation {
     display: flex;
     background-color: hsl(var(--clr-dark) / 0.95);
+    height: 100%;
   }
 
   .primary-navigation a span {
@@ -325,6 +336,7 @@ p {
 
   @media (max-width: 40rem) {
     .primary-navigation {
+      visibility: hidden;
       flex-direction: column;
       position: fixed;
       inset: 0 0 0 20%;
@@ -337,6 +349,7 @@ p {
     }
 
     .primary-navigation[data-visible="true"] {
+      visibility: visible;
       transform: translateX(0);
     }
 
@@ -381,7 +394,7 @@ p {
 
   @media (min-width: 64rem) {
     .primary-navigation {
-      padding-inline: 4rem;
+      padding-inline: 8rem;
     }
   }
 

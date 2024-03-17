@@ -1,7 +1,10 @@
-import React from "react";
-
+import Navigation from "../components/Navigation";
 const Crew = () => {
-  return <div>Crew</div>;
+  return (
+    <>
+      <Navigation />
+    </>
+  );
 };
 
 export default Crew;
