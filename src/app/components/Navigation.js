@@ -18,7 +18,7 @@ const Navigation = () => {
       <div className="logo flex justify-center items-center">
         <img src="/shared/logo.svg" alt="logo" />
       </div>
-      <hr className="lg:border-white/25 lg:flex-1 lg:-mr-8 z-10" />
+      <hr className="hr-line lg:border-white/25 lg:flex-1 lg:-mr-8 z-10" />
       <button
         onClick={toggleNav}
         className="mobile-nav-toggle"
@@ -36,31 +36,31 @@ const Navigation = () => {
         >
           <li className={isActive("/") ? "active" : ""}>
             <Link href="/" className="uppercase text-white letter-spacing-2">
-              <span>00</span>Home
+              <span aria-hidden="true">00</span>Home
             </Link>
           </li>
           <li className={isActive("/destination") ? "active" : ""}>
             <Link
               href="/destination"
-              className="font-sans uppercase text-white letter-spacing-2"
+              className="ff-sans uppercase text-white letter-spacing-2"
             >
-              <span>01</span>Destination
+              <span aria-hidden="true">01</span>Destination
             </Link>
           </li>
           <li className={isActive("/crew") ? "active" : ""}>
             <Link
               href="/crew"
-              className="font-sans uppercase text-white letter-spacing-2"
+              className="ff-sans uppercase text-white letter-spacing-2"
             >
-              <span>02</span>Crew
+              <span aria-hidden="true">02</span>Crew
             </Link>
           </li>
           <li className={isActive("/technology") ? "active" : ""}>
             <Link
               href="/technology"
-              className="font-sans uppercase text-white letter-spacing-2"
+              className="ff-sans uppercase text-white letter-spacing-2"
             >
-              <span>03</span>Technology
+              <span aria-hidden="true">03</span>Technology
             </Link>
           </li>
         </menu>

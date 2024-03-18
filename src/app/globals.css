@@ -42,7 +42,7 @@
   --ff-sans-normal: "Barlow", sans-serif;
 }
 
-@screen sm {
+@media (min-width: 40rem) {
   :root {
     --fs-900: 9.375rem;
     --fs-800: 5rem;
@@ -52,7 +52,7 @@
   }
 }
 
-@screen md {
+@media (min-width: 48rem) {
   :root {
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
@@ -73,11 +73,9 @@ body {
   color: hsl(var(--clr-white));
   line-height: 1.5;
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: min-content 1fr;
+
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
-  overflow: hidden;
 }
 
 h1,
@@ -128,7 +126,7 @@ p {
   }
 
   /* typography */
-  /* .ff-serif {
+  .ff-serif {
     font-family: var(--ff-serif);
   }
   .ff-sans-cond {
@@ -136,7 +134,7 @@ p {
   }
   .ff-sans-normal {
     font-family: var(--ff-sans-normal);
-  } */
+  }
 
   .letter-spacing-1 {
     letter-spacing: 4.75px;
@@ -193,6 +191,22 @@ p {
     line-height: 1.1;
   }
 
+  .fw-bold {
+    font-weight: bold;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .flex {
+    display: flex;
+  }
+
   /* * + * - Applied to elements that have adjacent elements before it */
   /* *:not(:first-child) works the same as well */
   .flow > *:where(:not(:first-child)) {
@@ -204,7 +218,28 @@ p {
 @layer components {
   .sr-only {
     clip: rect(0, 0, 0, 0);
-    @apply absolute w-[1px] h-[1px] p-0 m-[-1px] overflow-hidden whitespace-nowrap border-0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    white-space: no-wrap;
+    border: 0;
+  }
+
+  .skip-to-content {
+    position: absolute;
+    z-index: 9999;
+    background-color: hsl(var(--clr-white));
+    color: hsl(var(--clr-dark));
+    padding: 0.5em 1em;
+    margin-inline: auto;
+    transform: translateY(-100%);
+  }
+
+  .skip-to-content:focus {
+    transform: translateY(0);
   }
 
   .custom-container {
@@ -220,7 +255,7 @@ p {
     padding-inline: 2rem;
   }
 
-  @screen lg {
+  @media (min-width: 64rem) {
     .grid-container {
       text-align: left;
       column-gap: var(--container-gap, 2rem);
@@ -238,7 +273,7 @@ p {
     }
   }
 
-  @screen lg {
+  @media (min-width: 64rem) {
     .grid-container--home {
       padding-bottom: max(6rem, 25vh);
       align-items: end;
@@ -260,20 +295,38 @@ p {
   }
 
   .large-button {
-    @apply relative z-[1] font-serif uppercase inline-grid place-content-center aspect-square rounded-full bg-white text-dark px-[2em] text-[2rem];
+    position: relative;
+    z-index: 1;
+    font-family: var(--ff-serif);
+    text-transform: uppercase;
+    display: inline-grid;
+    place-content: center;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background-color: hsl(var(--clr-white));
+    color: hsl(var(--clr-dark));
+    padding-inline: 2em;
+    font-size: 2rem;
   }
   /* bg-white/[0.1036] */
   .large-button::after {
     content: "";
-    @apply aspect-square absolute -z-[1] bg-white/15 w-full h-full rounded-full opacity-0;
-
+    aspect-ratio: 1;
+    position: absolute;
+    z-index: -1;
+    background-color: hsl(var(--clr-white) / 0.15);
+    width: 100%;
+    height: 100%;
+    border-radius: 9999px;
+    opacity: 0;
     /* Equivalent with tailwindcss is [transition:opacity_0.5s_linear,transform_0.75s_ease-in-out]; */
     transition: opacity 0.5s linear, transform 0.75s ease-in-out;
   }
 
   .large-button:hover::after,
   .large-button:focus::after {
-    @apply scale-150 opacity-100;
+    transform: scale(1.5);
+    opacity: 1;
   }
 
   /* .primary-navigation {
@@ -304,7 +357,7 @@ p {
 
   @media (min-width: 64rem) {
     .primary-header {
-      margin-top: 3rem;
+      margin-block: 3rem;
     }
   }
 
@@ -409,9 +462,15 @@ p {
   }
 
   .underline-indicators > .active,
-  .underline-indicators > [aria-selected="true"] {
+  .underline-indicators > [aria-selected="true"],
+  .underline-indicators.destination-list > .active,
+  .underline-indicators.destination-list > [aria-selected="true"] {
     border-color: hsl(var(--clr-white) / 1);
     color: hsl(var(--clr-white) / 1);
+  }
+
+  .underline-indicators.destination-list {
+    color: hsl(var(--clr-light));
   }
 
   .dot-indicators > * {
@@ -428,20 +487,26 @@ p {
   }
 
   .dot-indicators > [aria-selected="true"] {
-    @apply bg-white;
+    background-color: hsl(var(--clr-white));
   }
 
   .numbered-indicators > * {
-    @apply fs-600 grid place-content-center rounded-full aspect-square border border-white/25;
+    font-size: var(--fs-600);
+    display: grid;
+    place-content: center;
+    border-radius: 9999px;
+    aspect-ratio: 1;
+    border: 1px solid hsl(var(--clr-white) / 0.25);
   }
 
   .numbered-indicators > *:hover,
   .numbered-indicators > *:focus {
-    @apply border-white;
+    border-color: hsl(var(--clr-white));
   }
 
   .numbered-indicators > [aria-selected="true"] {
-    @apply text-dark bg-white;
+    color: hsl(var(--clr-dark));
+    background-color: hsl(var(--clr-white));
   }
 
   .headline > span {
@@ -453,23 +518,122 @@ p {
     line-height: 2;
   }
 
-  .home {
+  @media (min-width: 64rem) {
+    .hr-line {
+      border: 1px solid hsl(var(--clr-white));
+      flex: 1 1 0%;
+      margin-right: -2rem;
+      z-index: 10;
+    }
+  }
+
+  /* .home {
     background-image: url("/home/background-home-mobile.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom center;
   }
 
-  @screen md {
+  @media (min-width: 48rem) {
     .home {
       background-image: url("/home/background-home-tablet.jpg");
       background-position: top center;
     }
   }
 
-  @screen lg {
+  @media (min-width: 64rem) {
     .home {
       background-image: url("/home/background-home-desktop.jpg");
     }
+  } */
+
+  .background {
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    overflow: hidden;
+    width: 100vw;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .home-background {
+    background-image: url("/home/background-home-mobile.jpg");
+    background-position: bottom center;
+  }
+
+  @media (min-width: 48rem) {
+    .home-background {
+      background-image: url("/home/background-home-tablet.jpg");
+      background-position: top center;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .home-background {
+      background-image: url("/home/background-home-desktop.jpg");
+    }
+  }
+
+  .destination-background {
+    background-image: url("/destination/background-destination-mobile.jpg");
+    background-position: bottom center;
+  }
+
+  @media (min-width: 48rem) {
+    .destination-background {
+      background-image: url("/destination/background-destination-tablet.jpg");
+      background-position: top center;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .destination-background {
+      background-image: url("/destination/background-destination-desktop.jpg");
+    }
+  }
+
+  .destination-list {
+    display: flex;
+    gap: 2rem;
+    --underline-gap: 1rem;
+  }
+
+  @media (max-width: 64rem) {
+    .destination-list {
+      justify-content: center;
+    }
+  }
+
+  .destination-name {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .destination-description {
+    color: hsl(var(--clr-light));
+    line-height: 2;
+    margin-bottom: 3rem;
+  }
+
+  .destination-travel-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-block: 2rem;
+    text-transform: uppercase;
+  }
+
+  .destination-travel-info > div > h4 {
+    font-family: var(--ff-sans-cond);
+    font-size: var(--fs-300);
+    letter-spacing: 2.36px;
+    margin-bottom: 1rem;
+    color: hsl(var(--clr-light));
+  }
+
+  .destination-travel-info > div > p {
+    font-family: var(--ff-serif);
+    font-size: var(--fs-500);
   }
 }
