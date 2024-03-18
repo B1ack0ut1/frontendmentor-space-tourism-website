@@ -18,7 +18,7 @@ const Navigation = () => {
       <div className="logo flex justify-center items-center">
         <img src="/shared/logo.svg" alt="logo" />
       </div>
-      <hr className="hr-line lg:border-white/25 lg:flex-1 lg:-mr-8 z-10" />
+      <hr className="nav-hr-line" />
       <button
         onClick={toggleNav}
         className="mobile-nav-toggle"

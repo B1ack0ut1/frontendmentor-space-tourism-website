@@ -1,6 +1,5 @@
 "use client";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
 
 const Background = ({ children }) => {
   const pathname = usePathname();
@@ -11,11 +10,7 @@ const Background = ({ children }) => {
     "/crew": "crew",
     "/technology": "technology",
   };
-  return (
-    <div className={`background ${pathMap[pathname]}-background`}>
-      {children}
-    </div>
-  );
+  return <div className={`background destination-background`}>{children}</div>;
 };
 
 export default Background;

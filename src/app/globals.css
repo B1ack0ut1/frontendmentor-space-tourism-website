@@ -30,8 +30,8 @@
   --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
   --fs-800: 3.5rem;
   --fs-700: 1.5rem;
-  --fs-600: 1rem;
-  --fs-500: 1.75rem;
+  --fs-600: 1.25rem;
+  --fs-500: 1rem;
   --fs-400: 0.9375rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
@@ -48,6 +48,8 @@
     --fs-800: 5rem;
     --fs-700: 2.5rem;
     --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+
     --fs-400: 1rem;
   }
 }
@@ -57,6 +59,8 @@
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
     --fs-600: 2rem;
+    --fs-500: 1.75rem;
+
     --fs-400: 1.125rem;
   }
 }
@@ -76,6 +80,7 @@ body {
 
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
+  overflow-x: hidden;
 }
 
 h1,
@@ -253,9 +258,10 @@ p {
     text-align: center;
     place-items: center;
     padding-inline: 2rem;
+    padding-bottom: 3rem;
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 76rem) {
     .grid-container {
       text-align: left;
       column-gap: var(--container-gap, 2rem);
@@ -264,19 +270,38 @@ p {
           1fr
         );
     }
-    .grid-container > *:first-child {
+    .grid-container--home > *:first-child {
       grid-column: 2;
     }
 
-    .grid-container > *:last-child {
+    .grid-container--home > *:last-child {
       grid-column: 3;
     }
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 76rem) {
     .grid-container--home {
       padding-bottom: max(6rem, 25vh);
       align-items: end;
+    }
+  }
+
+  .grid-container--destination {
+    grid-template-areas:
+      "title"
+      "image"
+      "tabs"
+      "content";
+  }
+
+  @media (min-width: 76rem) {
+    .grid-container--destination {
+      grid-template-areas:
+        ". title title ."
+        ". image tabs ."
+        ". image content .";
+      place-items: start;
+      align-content: start;
     }
   }
 
@@ -292,6 +317,37 @@ p {
     color: hsl(var(--clr-white) / 0.25);
     margin-right: 0.5em;
     font-weight: 700;
+  }
+
+  /* .grid-container .left-portion {
+    width: 100%;
+    text-align: start;
+  } */
+
+  .grid-container--destination .numbered-title {
+    grid-area: title;
+  }
+
+  @media (min-width: 40rem) {
+    .numbered-title {
+      justify-self: start;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  .grid-container--destination img {
+    grid-area: image;
+    place-self: center;
+  }
+
+  .grid-container--destination menu {
+    grid-area: tabs;
+    margin-bottom: 3rem;
+  }
+
+  .grid-container--destination article {
+    grid-area: content;
   }
 
   .large-button {
@@ -355,7 +411,7 @@ p {
     height: 96px;
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 76rem) {
     .primary-header {
       margin-block: 3rem;
     }
@@ -435,7 +491,7 @@ p {
     }
   }
 
-  @media (min-width: 40rem) and (max-width: 64rem) {
+  @media (min-width: 40rem) and (max-width: 76rem) {
     .primary-navigation {
       padding-inline: 2.25rem;
     }
@@ -445,7 +501,7 @@ p {
     }
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 76rem) {
     .primary-navigation {
       padding-inline: 8rem;
     }
@@ -518,9 +574,9 @@ p {
     line-height: 2;
   }
 
-  @media (min-width: 64rem) {
-    .hr-line {
-      border: 1px solid hsl(var(--clr-white));
+  @media (min-width: 76rem) {
+    .nav-hr-line {
+      border: 1px solid hsl(var(--clr-white) / 0.25);
       flex: 1 1 0%;
       margin-right: -2rem;
       z-index: 10;
@@ -541,7 +597,7 @@ p {
     }
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 76rem) {
     .home {
       background-image: url("/home/background-home-desktop.jpg");
     }
@@ -569,7 +625,7 @@ p {
     }
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 76rem) {
     .home-background {
       background-image: url("/home/background-home-desktop.jpg");
     }
@@ -587,7 +643,7 @@ p {
     }
   }
 
-  @media (min-width: 64rem) {
+  @media (min-width: 76rem) {
     .destination-background {
       background-image: url("/destination/background-destination-desktop.jpg");
     }
@@ -599,32 +655,50 @@ p {
     --underline-gap: 1rem;
   }
 
-  @media (max-width: 64rem) {
+  @media (max-width: 76rem) {
     .destination-list {
       justify-content: center;
     }
   }
 
   .destination-name {
-    margin-top: 3rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
   }
 
   .destination-description {
+    --line-height: 2em;
     color: hsl(var(--clr-light));
-    line-height: 2;
-    margin-bottom: 3rem;
+    line-height: var(--line-height);
+    margin-bottom: 4rem;
+    /* Want to have at least 3 lines worth of space for height */
+    min-height: calc(3 * var(--line-height));
   }
 
   .destination-travel-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin-block: 2rem;
+    grid-template-columns: 1fr;
+    padding-top: 2rem;
     text-transform: uppercase;
+    border-top: 1px solid hsl(var(--clr-white) / 0.25);
   }
 
-  .destination-travel-info > div > h4 {
+  @media (max-width: 48rem) {
+    .destination-travel-info {
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .destination-travel-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 2rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .destination-travel-info > div > h3 {
     font-family: var(--ff-sans-cond);
     font-size: var(--fs-300);
     letter-spacing: 2.36px;
