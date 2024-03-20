@@ -606,6 +606,10 @@ p {
     background-color: hsl(var(--clr-white));
   }
 
+  .grid-container--home h1 {
+    margin-top: 1rem;
+  }
+
   .headline > span {
     margin: 2rem 0;
   }
@@ -613,6 +617,7 @@ p {
   .sub-headline {
     max-width: 28rem;
     line-height: 2;
+    margin-bottom: 1rem;
   }
 
   @media (min-width: 76rem) {
@@ -807,6 +812,7 @@ p {
   .crew-member-photo {
     border-bottom: 1px solid hsl(#383b4b);
     margin-inline: auto;
+    max-height: 250px;
   }
 
   @media (min-width: 40rem) {
