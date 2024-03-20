@@ -210,7 +210,7 @@ export default function DesignSystem() {
                 </button>
               </div>
               {/* <!-- Dots --> */}
-              <div className="dot-indicators flex gap-4">
+              <div className="dot-indicators">
                 <button aria-selected="true">
                   <span className="sr-only">Slide title</span>
                 </button>

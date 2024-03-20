@@ -240,7 +240,7 @@ p {
     color: hsl(var(--clr-dark));
     padding: 0.5em 1em;
     margin-inline: auto;
-    transform: translateY(-100%);
+    transform: translateY(-125%);
   }
 
   .skip-to-content:focus {
@@ -311,6 +311,7 @@ p {
     font-family: var(--ff-sans-cond);
     font-size: var(--fs-500);
     letter-spacing: 4.72px;
+    margin-bottom: 1rem;
   }
 
   .numbered-title span {
@@ -348,6 +349,40 @@ p {
 
   .grid-container--destination article {
     grid-area: content;
+  }
+
+  .grid-container--crew {
+    grid-template-areas:
+      "role"
+      "image"
+      "controller"
+      "content";
+  }
+
+  .grid-container--crew .crew-member-role {
+    grid-area: role;
+  }
+
+  .grid-container--crew article {
+    grid-area: content;
+  }
+  .grid-container--crew .dot-indicators {
+    grid-area: controller;
+  }
+
+  .grid-container--crew .crew-member-photo-frame {
+    grid-area: image;
+  }
+
+  @media (min-width: 40rem) {
+    .grid-container--crew {
+      grid-template-areas:
+        "role"
+        "content"
+        "controller"
+        "image";
+      padding-bottom: 0;
+    }
   }
 
   .large-button {
@@ -529,6 +564,12 @@ p {
     color: hsl(var(--clr-light));
   }
 
+  .dot-indicators {
+    display: flex;
+    gap: 1rem;
+    margin-block: 1.5rem;
+  }
+
   .dot-indicators > * {
     background-color: hsl(var(--clr-light) / 0.25);
     padding: 0.5em;
@@ -649,6 +690,23 @@ p {
     }
   }
 
+  .crew-background {
+    background-image: url("/crew/background-crew-mobile.jpg");
+    background-position: top center;
+  }
+
+  @media (min-width: 48rem) {
+    .crew-background {
+      background-image: url("/crew/background-crew-tablet.jpg");
+    }
+  }
+
+  @media (min-width: 76rem) {
+    .crew-background {
+      background-image: url("/crew/background-crew-desktop.jpg");
+    }
+  }
+
   .destination-list {
     display: flex;
     gap: 2rem;
@@ -709,5 +767,69 @@ p {
   .destination-travel-info > div > p {
     font-family: var(--ff-serif);
     font-size: var(--fs-500);
+  }
+
+  .crew-member-role {
+    font-family: var(--ff-serif);
+    color: hsl(var(--clr-white) / 0.5);
+    font-size: var(--fs-600);
+    text-transform: uppercase;
+  }
+
+  .crew-member-name {
+    font-family: var(--ff-serif);
+    font-size: var(--fs-700);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .crew-member-bio {
+    --line-height: 2em;
+    color: hsl(var(--clr-light));
+    line-height: var(--line-height);
+    font-size: var(--fs-400);
+  }
+
+  @media (max-width: 40rem) {
+    .crew-member-bio {
+      min-height: calc(6 * var(--line-height));
+    }
+  }
+
+  @media (min-width: 40rem) {
+    .crew-member-bio {
+      min-height: calc(4 * var(--line-height));
+      max-width: 600px;
+      margin-inline: auto;
+    }
+  }
+
+  .crew-member-photo {
+    border-bottom: 1px solid hsl(#383b4b);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 40rem) {
+    .crew-member-photo {
+      border-bottom: 1px solid hsl(#383b4b);
+      margin-inline: auto;
+      max-height: 600px;
+    }
+  }
+
+  .crew-member-photo-frame {
+    width: 100%;
+  }
+
+  .crew-member-photo-hr-border {
+    display: none;
+  }
+
+  @media (max-width: 40rem) {
+    .crew-member-photo-hr-border {
+      display: block;
+      border: 1px solid #383b4b;
+      width: 100%;
+    }
   }
 }

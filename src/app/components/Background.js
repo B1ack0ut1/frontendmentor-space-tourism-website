@@ -10,7 +10,7 @@ const Background = ({ children }) => {
     "/crew": "crew",
     "/technology": "technology",
   };
-  return <div className={`background destination-background`}>{children}</div>;
+  return <div className={`background crew-background`}>{children}</div>;
 };
 
 export default Background;
