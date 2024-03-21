@@ -864,6 +864,32 @@ p {
     }
   }
 
+  .tech-name {
+    text-transform: uppercase;
+    font-size: var(--fs-700);
+    font-family: var(--ff-serif);
+    margin-bottom: 1rem;
+  }
+
+  .tech-name span {
+    display: block;
+    color: hsl(var(--clr-light));
+    font-family: var(--ff-sans-cond);
+    letter-spacing: 2.7px;
+    font-size: var(--fs-400);
+    margin-bottom: 1rem;
+  }
+
+  .tech-description {
+    color: hsl(var(--clr-light));
+    line-height: 2;
+  }
+
+  .technology-photo-landscape {
+    max-width: calc(100% + 4em);
+    margin-bottom: 2rem;
+  }
+
   .technology-photo-portrait {
     display: none;
   }

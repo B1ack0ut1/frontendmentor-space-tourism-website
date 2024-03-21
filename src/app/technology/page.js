@@ -39,7 +39,7 @@ const Technology = () => {
         </menu>
         <article>
           <h2 className="tech-name">
-            <span>The terminology</span>
+            <span>The terminology... </span>
             {selectedTech.name}
           </h2>
           <p className="tech-description">{selectedTech.description}</p>
