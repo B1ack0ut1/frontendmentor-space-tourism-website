@@ -17,12 +17,12 @@ const Technology = () => {
           <span>03</span>Space launch 101
         </h1>
         <img
-          className="technology-photo-landscape"
+          className="tech-photo-landscape"
           src={selectedTech.images.landscape}
           alt={`Image of ${selectedTech.name}`}
         />
         <img
-          className="technology-photo-portrait"
+          className="tech-photo-portrait"
           src={selectedTech.images.portrait}
           alt={`Image of ${selectedTech.name}`}
         />
@@ -30,6 +30,7 @@ const Technology = () => {
           {technologies.map((tech, index) => (
             <li
               key={tech.name}
+              onClick={() => setSelectedTech(tech)}
               role="button"
               aria-selected={selectedTech.name === tech.name ? "true" : "false"}
             >
