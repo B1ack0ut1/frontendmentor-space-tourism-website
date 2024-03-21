@@ -222,16 +222,10 @@ export default function DesignSystem() {
                 </button>
               </div>
               {/* <!-- Numbers --> */}
-              <div className="numbered-indicators grid grid-cols-3 gap-6">
-                <button aria-selected="true" className="font-serif">
-                  1
-                </button>
-                <button aria-selected="false" className="font-serif">
-                  2
-                </button>
-                <button aria-selected="false" className="font-serif">
-                  3
-                </button>
+              <div className="numbered-indicators">
+                <button aria-selected="true">1</button>
+                <button aria-selected="false">2</button>
+                <button aria-selected="false">3</button>
               </div>
             </div>
           </div>
