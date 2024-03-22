@@ -15,7 +15,7 @@ const Navigation = () => {
 
   return (
     <header className="primary-header">
-      <div className="logo flex justify-center items-center">
+      <div className="logo">
         <img src="/shared/logo.svg" alt="logo" />
       </div>
       <hr className="nav-hr-line" />
@@ -31,35 +31,26 @@ const Navigation = () => {
       <nav>
         <menu
           id="primary-navigation"
-          className={`gap-8 primary-navigation underline-indicators`}
+          className="primary-navigation underline-indicators"
           data-visible={isNavOpen ? "true" : "false"}
         >
           <li className={isActive("/") ? "active" : ""}>
-            <Link href="/" className="uppercase text-white letter-spacing-2">
+            <Link href="/">
               <span aria-hidden="true">00</span>Home
             </Link>
           </li>
           <li className={isActive("/destination") ? "active" : ""}>
-            <Link
-              href="/destination"
-              className="ff-sans uppercase text-white letter-spacing-2"
-            >
+            <Link href="/destination">
               <span aria-hidden="true">01</span>Destination
             </Link>
           </li>
           <li className={isActive("/crew") ? "active" : ""}>
-            <Link
-              href="/crew"
-              className="ff-sans uppercase text-white letter-spacing-2"
-            >
+            <Link href="/crew">
               <span aria-hidden="true">02</span>Crew
             </Link>
           </li>
           <li className={isActive("/technology") ? "active" : ""}>
-            <Link
-              href="/technology"
-              className="ff-sans uppercase text-white letter-spacing-2"
-            >
+            <Link href="/technology">
               <span aria-hidden="true">03</span>Technology
             </Link>
           </li>

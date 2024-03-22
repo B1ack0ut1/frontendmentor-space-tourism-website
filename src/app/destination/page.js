@@ -24,6 +24,7 @@ const Destination = () => {
             <li
               key={destination.name}
               className="uppercase ff-sans-cond letter-spacing-2"
+              role="button"
               aria-selected={
                 selectedDestination.name === destination.name ? "true" : "false"
               }
@@ -34,9 +35,7 @@ const Destination = () => {
           ))}
         </menu>
         <article>
-          <h2 className="fs-900 ff-serif text-white destination-name">
-            {selectedDestination.name}
-          </h2>
+          <h2 className="destination-name">{selectedDestination.name}</h2>
           <p className="destination-description">
             {selectedDestination.description}
           </p>
