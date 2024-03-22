@@ -10,7 +10,7 @@ const Technology = () => {
   const [selectedTech, setSelectedTech] = useState(technologies[0]);
 
   return (
-    <Background>
+    <>
       <Navigation />
       <main className="grid-container grid-container--tech">
         <h1 className="numbered-title">
@@ -46,7 +46,7 @@ const Technology = () => {
           <p className="tech-description">{selectedTech.description}</p>
         </article>
       </main>
-    </Background>
+    </>
   );
 };
 

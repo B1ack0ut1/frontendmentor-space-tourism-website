@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import Navigation from "./components/Navigation";
+import Navigation from "../components/Navigation";
 import Link from "next/link";
-import Background from "./components/Background";
+import Background from "../components/Background";
 
 export default function Home() {
   return (
-    <Background>
+    <>
       <Link className="skip-to-content" href="#main">
         Skip to main content
       </Link>
@@ -30,6 +30,6 @@ export default function Home() {
           </Link>
         </div>
       </main>
-    </Background>
+    </>
   );
 }

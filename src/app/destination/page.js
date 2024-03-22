@@ -12,7 +12,7 @@ const Destination = () => {
   );
 
   return (
-    <Background>
+    <>
       <Navigation />
       <main className="grid-container grid-container--destination">
         <h1 className="numbered-title">
@@ -51,7 +51,7 @@ const Destination = () => {
           </div>
         </article>
       </main>
-    </Background>
+    </>
   );
 };
 

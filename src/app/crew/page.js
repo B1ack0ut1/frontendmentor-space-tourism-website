@@ -10,7 +10,7 @@ const Crew = () => {
   const [selectedCrewMember, setSelectedCrewMember] = useState(crew[0]);
 
   return (
-    <Background>
+    <>
       <Navigation />
       <main className="grid-container grid-container--crew">
         <h1 className="numbered-title">
@@ -44,7 +44,7 @@ const Crew = () => {
           <hr className="crew-member-photo-hr-border" />
         </div>
       </main>
-    </Background>
+    </>
   );
 };
 
